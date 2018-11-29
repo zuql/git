@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" addBOMForNewFiles="with NO BOM">
+    <file url="file://$PROJECT_DIR$/JT-common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/JT-manager" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/JT-manager/JT-manager-dao" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/JT-manager/JT-manager-pojo" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/JT-manager/JT-manager-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/JT-manager/JT-manager-web" charset="UTF-8" />
+  </component>
+</project>
