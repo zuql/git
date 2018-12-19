@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace 标识映射文件  -->
+<mapper namespace="com.zuql.jt.cart.mapper.CartMapper">
+	
+	<!--修改购物车数量  -->
+	<update id="updateNum">
+		update tb_cart set num = #{num},updated = #{updated}
+		where user_id = #{userId} and item_id = #{itemId}
+	</update>
+	
+	<select id="findCartByUI" resultType="Cart">
+		select * from tb_cart where user_id = #{userId} and item_id = #{itemId}
+	</select>
+	
+	
+	
+	
+	
+	
+	
+</mapper>

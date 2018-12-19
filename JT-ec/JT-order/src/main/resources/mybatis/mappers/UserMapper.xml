@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace 标识映射文件  -->
+<mapper namespace="com.zuql.jt.sso.mapper.UserMapper">
+
+    <!--
+            #  1.预编译效果 2.为参数添加一对""号
+            $  凡是以字段名称为参数时,使用$符.
+          -->
+    <select id="findCheckUser" resultType="int">
+        select count(*) from tb_user where ${column} = #{param}
+    </select>
+	
+	
+</mapper>

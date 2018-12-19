@@ -86,6 +86,7 @@ var TT = KindEditorUtil = {		//相当于java中定义的工具类，里面提供
         		</div>');
     		// 回显图片
         	if(data && data.pics){
+                debugger
         		var imgs = data.pics.split(",");
         		for(var i in imgs){
         			if($.trim(imgs[i]).length > 0){
@@ -99,9 +100,11 @@ var TT = KindEditorUtil = {		//相当于java中定义的工具类，里面提供
         			var editor = this;
         			editor.plugin.multiImageDialog({
 						clickFn : function(urlList) {
+							debugger
 							var imgArray = [];
 							KindEditor.each(urlList, function(i, data) {
-								imgArray.push(data.url);
+								imgArray.push(data.url)
+                                debugger
 								form.find(".pics ul").append("<li><a href='"+data.url+"' target='_blank'><img src='"+data.url+"' width='80' height='50' /></a></li>");
 							});
 							form.find("[name=image]").val(imgArray.join(","));

@@ -1,4 +1,4 @@
-package com.zuql.JT;
+package com.zuql.jt;
 
 import static org.junit.Assert.assertTrue;
 
