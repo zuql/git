@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+function call()
+{
+//调android平台打电话
+//androidPhoneObject是android平台
+//android平台有phone java对象有call()方法
+//android webview.addJavaScriptInterface(phone,androidPhoneObject)
+window.androidPhoneObject.call();
+}
+</script>
+</head>
+<body>
+<button onclick="call()">110</button>
+</body>
+</html>
+
+
+

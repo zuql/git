@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+<script src="js/vue.js" type="text/javascript"></script>
+<script src="js/axios.min.js" type="text/javascript"></script>
+</head>
+<body>
+	<div id="app" class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<img src="\images\mobileImage\bar.png" />
+			</div>
+		</div>
+		<div class="row">
+			<div v-for="item in items" class="col-xs-12 col-sm-6">
+			<a v-bind:href="item.detailUrl">
+			<img v-bind:src="item.image"/>
+			<span>{{item.title}}</span>
+			<span>{{item.price}}</span>
+			</a>
+			
+			
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+	var options = {
+		el : "#app",
+		mounted:function(){
+			//从浏览地址栏中拷贝
+			var url="/api/getIndexItem.html";
+			//用axios,联网成功后回调then
+			axios.get(url)
+			.then(function(res){
+				//res包含6个对象 config,data,response,headers,status,statusText
+				//得到controller返回的结果
+				var serverData=res.data;
+				//controller返回的数据一般是放在data,还有status,msg
+				//then中的items不能用数据绑定显示在网页上
+				var items=serverData.data;
+				console.log(items);
+				//<a href="1808detail.html?itemId=28">
+				//this.vue.items是data中的items
+				//items中有4个对象，对象有Id,title,price,没有detailUrl
+				//js,可以给对象加一个属性
+				for (var i=0;i<items.length;i++)
+					{
+					var item=items[i];
+					//加属性
+					item.detailUrl="1808detail.html?itemId="+item.id;
+					}
+				this.vue.items=items;
+			})
+			.catch();
+		},
+		data : {//模拟数据
+			items : [ {
+				title : "1",
+				price : 99
+			}, {
+				title : "1",
+				price : 99
+			} ]
+		}
+	};
+	var vue = new Vue(options)
+</script>
+
+
+
+
+
+

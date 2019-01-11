@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="css/bootstrap.css" rel="sytlesheet" type="text/css">
+<script src="js/vue.js" type="text/javascript">
+	
+</script>
+<script src="js/axios.min.js" type="text/javascript">
+	
+</script>
+<script src="js/util.js" type="text/javascript">
+	
+</script>
+
+</head>
+<body>
+	<div id="app" class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<a href="1808index.html">返回</a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+			<img v-bind:src="item.image"/>
+			<span>{{item.title}}</span>
+			<span>{{item.sellPoint}}</span>
+			<div v-html="item.desc"></div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+var myArray = new Array();
+myArray["itemId"]=3;
+myArray["userId"]=9;
+console.log(myArray["itemId"]);
+var options={
+		el:"#app",
+		data:{item:null},
+		mounted:function()
+		{
+			//.html?itemId=3&userId=9
+			//location.search取?itemId=3&userId=9
+			//split(&) [0]itemId=3 [1]userId=9
+			//for { split(=)}
+			//map itemId 3
+			//    userID 9
+			//js中数组能实现map [itemId]=3 [userID]=9
+			var map=getParamMap();
+			var itemId=map.get("itemId");
+			var url="/api/getItemDetail.html?itemId="+itemId;
+			axios.get(url).then(function(res){
+				//res包含6个对象config,data,headers,response,status,statusText
+				var serverData=res.data;
+				//serverData有三个属性{status,msg,data:{image,title,sellPoint,desc}}
+			var item=serverData.data;
+			this.vue.item=item;
+			}).catch();
+		}		
+}
+var vue=new Vue(options);
+</script>
+
+
+
+
+
+
+
+
+
